@@ -1,0 +1,75 @@
+#
+# Conditional build:
+%bcond_without	tests		# do not perform "make test"
+#
+%define		pdir	Package
+%define		pnam	Stash
+%include	/usr/lib/rpm/macros.perl
+Summary:	Package::Stash - routines for manipulating stashes
+Summary(pl.UTF-8):	Package::Stash - funkcje do manipulowania tablicami symboli
+Name:		perl-Package-Stash
+Version:	0.25
+Release:	1
+# same as perl
+License:	GPL v1+ or Artistic
+Group:		Development/Languages/Perl
+Source0:	http://www.cpan.org/modules/by-authors/id/D/DO/DOY/Package-Stash-%{version}.tar.gz
+# Source0-md5:	d0246414c6add513fdcc8c3c8e7dd83f
+URL:		http://search.cpan.org/dist/Package-Stash/
+BuildRequires:	perl-Dist-CheckConflicts
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.31
+BuildRequires:	perl-devel >= 1:5.8.1
+BuildRequires:	rpm-perlprov >= 4.1-13
+%if %{with tests}
+BuildRequires:	perl-Package-Stash-XS >= 0.21
+BuildRequires:	perl-Package-DeprecationManager
+BuildRequires:	perl-Test-Fatal
+BuildRequires:	perl-Test-Requires
+BuildRequires:	perl-Test-Simple >= 0.88
+%endif
+Suggests:	perl-Package-Stash-XS >= 0.21
+Conflicts:	perl-Class-MOP <= 1.08
+Conflicts:	perl-MooseX-Role-WithOverloading <= 0.08
+Conflicts:	perl-namespace-clean <= 0.18
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+Manipulating stashes (Perl's symbol tables) is occasionally necessary,
+but incredibly messy, and easy to get wrong. This module hides all of
+that behind a simple API.
+
+%description -l pl.UTF-8
+Manipulowanie stashami (perlowymi tablicami symboli) jest czasem
+niezbędne, ale bardzo zawiłe i błędogenne. Ten moduł ukrywa wszystko w
+prostym API.
+
+%prep
+%setup -q -n %{pdir}-%{pnam}-%{version}
+
+%build
+%{__perl} Makefile.PL \
+	INSTALLDIRS=vendor
+%{__make}
+
+%{?with_tests:%{__make} test}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} pure_install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+# already handled by rpm Conflicts - don't generate Dist::CheckConflicts dep
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/package-stash-conflicts \
+	$RPM_BUILD_ROOT%{perl_vendorlib}/Package/Stash/Conflicts.pm
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc Changes README
+%{perl_vendorlib}/Package/Stash.pm
+%{perl_vendorlib}/Package/Stash
+%{_mandir}/man3/Package::Stash*.3pm*
