@@ -8,13 +8,13 @@
 Summary:	Package::Stash - routines for manipulating stashes
 Summary(pl.UTF-8):	Package::Stash - funkcje do manipulowania tablicami symboli
 Name:		perl-Package-Stash
-Version:	0.34
+Version:	0.37
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Package/Package-Stash-%{version}.tar.gz
-# Source0-md5:	d85874dc8abada51b8d7870d8728e3b7
+# Source0-md5:	7e47a8261312e1cf3d12bd2007916b66
 URL:		http://search.cpan.org/dist/Package-Stash/
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.31
@@ -30,6 +30,7 @@ BuildRequires:	perl-Test-Simple >= 0.88
 %endif
 Suggests:	perl-Package-Stash-XS >= 0.26
 Conflicts:	perl-Class-MOP <= 1.08
+Conflicts:	perl-MooseX-Method-Signatures <= 0.36
 Conflicts:	perl-MooseX-Role-WithOverloading <= 0.08
 Conflicts:	perl-namespace-clean <= 0.18
 BuildArch:	noarch
@@ -63,7 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # already handled by rpm Conflicts - don't generate Dist::CheckConflicts dep
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/package-stash-conflicts \
-	$RPM_BUILD_ROOT%{perl_vendorlib}/Package/Stash/Conflicts.pm
+	$RPM_BUILD_ROOT%{perl_vendorlib}/Package/Stash/Conflicts.pm \
+	$RPM_BUILD_ROOT%{_mandir}/man1/package-stash-conflicts.1p
 
 %clean
 rm -rf $RPM_BUILD_ROOT
