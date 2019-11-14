@@ -8,13 +8,13 @@
 Summary:	Package::Stash - routines for manipulating stashes
 Summary(pl.UTF-8):	Package::Stash - funkcje do manipulowania tablicami symboli
 Name:		perl-Package-Stash
-Version:	0.37
+Version:	0.38
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Package/Package-Stash-%{version}.tar.gz
-# Source0-md5:	7e47a8261312e1cf3d12bd2007916b66
+# Source0-md5:	dc2d802eea2cb0b52ed9c4dd178761dd
 URL:		http://search.cpan.org/dist/Package-Stash/
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.31
