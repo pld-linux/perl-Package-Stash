@@ -4,7 +4,6 @@
 #
 %define		pdir	Package
 %define		pnam	Stash
-%include	/usr/lib/rpm/macros.perl
 Summary:	Package::Stash - routines for manipulating stashes
 Summary(pl.UTF-8):	Package::Stash - funkcje do manipulowania tablicami symboli
 Name:		perl-Package-Stash
