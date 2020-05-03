@@ -14,11 +14,12 @@ License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Package/Package-Stash-%{version}.tar.gz
 # Source0-md5:	dc2d802eea2cb0b52ed9c4dd178761dd
-URL:		http://search.cpan.org/dist/Package-Stash/
+URL:		https://metacpan.org/release/Package-Stash
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.31
 BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
 BuildRequires:	perl-Module-Implementation >= 0.06
 BuildRequires:	perl-Package-Stash-XS >= 0.26
