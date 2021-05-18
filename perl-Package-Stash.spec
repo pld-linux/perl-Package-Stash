@@ -7,13 +7,13 @@
 Summary:	Package::Stash - routines for manipulating stashes
 Summary(pl.UTF-8):	Package::Stash - funkcje do manipulowania tablicami symboli
 Name:		perl-Package-Stash
-Version:	0.38
+Version:	0.39
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Package/Package-Stash-%{version}.tar.gz
-# Source0-md5:	dc2d802eea2cb0b52ed9c4dd178761dd
+# Source0-md5:	287d80c9115c9230912aca684f8ca92e
 URL:		https://metacpan.org/release/Package-Stash
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.31
@@ -64,8 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # already handled by rpm Conflicts - don't generate Dist::CheckConflicts dep
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/package-stash-conflicts \
-	$RPM_BUILD_ROOT%{perl_vendorlib}/Package/Stash/Conflicts.pm \
-	$RPM_BUILD_ROOT%{_mandir}/man1/package-stash-conflicts.1p
+	$RPM_BUILD_ROOT%{perl_vendorlib}/Package/Stash/Conflicts.pm
 
 %clean
 rm -rf $RPM_BUILD_ROOT
